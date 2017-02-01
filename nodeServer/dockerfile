@@ -1,0 +1,35 @@
+# DOCKER VERSION 1.12.6
+
+# Use Ubuntu 16.04 LTS
+FROM ubuntu:16.04
+
+# File Author
+MAINTAINER Rajeshwaran Paulchamy
+
+# Install dependencies
+RUN apt-get update && \
+	apt-get -y install curl && \
+	curl -sL https://deb.nodesource.com/setup | bash - && \
+	apt-get -y install python build-essential
+
+# Install NodeJS
+RUN cd /tmp
+RUN curl https://nodejs.org/dist/latest/node-v7.4.0-linux-x64.tar.xz -o /tmp/node-v7.4.0-linux-x64.tar.xz
+RUN cd /tmp
+RUN echo $(ls /tmp)
+RUN tar xf /tmp/node-v7.4.0-linux-x64.tar.xz
+RUN mv node-v7.4.0-linux-x64/bin/* /usr/local/bin/
+RUN mv node-v7.4.0-linux-x64/lib/node_modules/ /usr/local/lib/
+
+# Install nodemon
+RUN npm install -g nodemon
+
+# Create a folder for application
+RUN mkdir /app
+
+# Expose port
+EXPOSE  3000
+
+# Run the server
+CMD ["nodemon", "/app/server/index.js"]
+

@@ -1,0 +1,20 @@
+{
+  "name": "webserver",
+  "version": "1.0.0",
+  "description": "Web Server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Rajeshwaran Paulchamy",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.16.0",
+    "client-sessions": "0.7.0",
+    "express": "4.14.0",
+    "mongodb": "2.2.22",
+    "winston": "2.3.1",
+    "winston-daily-rotate-file": "1.4.4"
+  }
+}
