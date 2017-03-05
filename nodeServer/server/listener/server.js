@@ -19,7 +19,7 @@ let logger = require("../utils/logger.js"),
 	http = require('http').Server(app),
 	bodyParser = require('body-parser'),
 	session = require('client-sessions'),
-	authService = require("../services/authService.js");
+	authService = require("../app/services/authService.js");
 
 /*
  * Start the server
@@ -36,7 +36,7 @@ function start(router) {
 	/*
 	 * session management
 	 */
-	app.use(session({
+	/*app.use(session({
 		cookieName: 'session',
 		secret: 'random_string_goes_here',
 		duration: 30 * 60 * 1000,
@@ -62,14 +62,28 @@ function start(router) {
 		} else {
 			next();
 		}
-	});
+	});*/
+
+
+	/*
+	 * CORS middleware
+	 */
+	var allowCrossDomain = function(req, res, next) {
+		res.header('Access-Control-Allow-Origin', '*');
+		res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
+		res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+
+		next();
+	}
+	app.use(allowCrossDomain); 
 
 	/* 
 	 * added for static path
 	 * here the path 'client' specified is relative 
 	 * to the path from where we are running the server
 	 */
-	app.use(express.static("/app/client/dist")); 
+	//app.use(express.static("/app/client/dist")); 
+	app.use(express.static("../client/src")); 
 	/* configure the routes */
 	router(app);
 

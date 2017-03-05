@@ -14,7 +14,14 @@
  * retrieve the required modules
  */
 let server = require('./listener/server'),
-	router = require('./routes/router');
+	init = require('./app/init/init'),
+	router = require('./app/routes/router');
+
+/*
+ * initialize the application 
+ */
+init.init();
+
 /*
  * start the webserver module 
  */

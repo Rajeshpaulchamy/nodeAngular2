@@ -1,0 +1,10 @@
+<div> Dashboard Page {{title}} </div>
+
+<div>
+	Users :
+	<ul>
+		<li *ngIf="user">{{user.username}} {{user.email}}</li>
+	</ul>
+</div>
+
+<p><a [routerLink]="['/login']">Logout</a></p>

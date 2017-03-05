@@ -14,7 +14,8 @@
 /*
  * retrieve the required modules
  */
-let logger = require("../utils/logger.js"),
+let logger = require("../../utils/logger.js"),
+	authService = require("../services/authService.js"),
 	controller = require('../controller/controller.js');
 
 /* 
@@ -25,7 +26,8 @@ function route(expressApp) {
 	/*
 	 * client root
 	 */
-	let clientRoot =  "/app/client/dist/";
+	//let clientRoot =  "/app/client/";
+	let clientRoot =  "../client/src/";
 
 	/*
 	 * check user already logged-in or not
@@ -74,6 +76,21 @@ function route(expressApp) {
 	 * the required login functionality is must
 	 */
 	expressApp.post('/controller', requireLogin, controller.ctrl.postMessage);
+
+	/*
+	 * post request to register user
+	 */
+	expressApp.post('/adduser', controller.ctrl.addUser);
+
+	/*
+	 * post request for login
+	 */
+	expressApp.post('/login', controller.ctrl.login);
+
+	/*
+	 * post request to get user
+	 */
+	expressApp.post('/getuser', authService.isAuthenticated, controller.ctrl.getUser);
 
 	/*
 	 * sample get, put, delete
