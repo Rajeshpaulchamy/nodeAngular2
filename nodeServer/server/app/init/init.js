@@ -14,7 +14,8 @@
  * retrieve the required modules
  */
 const config = require('../../config/config');
-var db = require('../models/db').db,
+let logger = require("../../utils/logger.js"),
+	db = require('../models/db').db,
 	userDao = require('../models/dao/userDao');
 
 /* 
@@ -25,12 +26,6 @@ function initialize() {
 	 * init database
 	 */
 	db.init();
-
-	/*
-	 * Check for Admin user
-	 */
-	userDao.dao.addAdministratorUser();
-
 }
 
 exports.init = initialize;

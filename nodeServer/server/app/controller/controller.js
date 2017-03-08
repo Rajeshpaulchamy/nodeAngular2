@@ -11,6 +11,7 @@
  */
 
 let logger = require("../../utils/logger.js"),
+	_ =  require('lodash'),
 	authService = require("../services/authService.js"),
 	userDao = require('../models/dao/userDao');
 
@@ -50,28 +51,30 @@ let ctrl = {
 	 * Request to adduser
 	 */
 	addUser: function (req, res){
-		return userDao.dao.addUser(req, res)
+		var query = {
+			username: req.body.username,
+			password: req.body.password,
+			email: req.body.email
+		};
+
+		return userDao.dao.addUser(query)
 			.then(function(user) {
 
-				logger.debug(__filename, __line, "User saved successfully");
+				if(_.isEmpty(user)) {
+					logger.error(__filename, __line, "User record not saved");
+					throw null;
+				} 
 
-				return authService.encodeToken(user);
-			})
-			.then(function(token) {
 				res.status(200).json({
 					status: 'success',
-					token: token
 				});
-
-				logger.debug(__filename, __line, "Token generated successfully");
+				logger.debug(__filename, __line, "User saved successfully");
 			})
 			.catch(function(err) {
 				res.status(500).json({
 					status: 'error'
 				});
-
-				logger.error(__filename, __line, "Exception occurred");
-
+				logger.error(__filename, __line, "Not able to save the user");
 			});
 	},
 
@@ -84,11 +87,23 @@ let ctrl = {
 
 		return userDao.dao.getUser({username: username})
 			.then(function(user) {
+				var isAuthenticated = false;
+
+				if(_.isEmpty(user)) {
+					logger.error(__filename, __line, "User not found");
+					throw null;
+				} 
 
 				logger.debug(__filename, __line, "User retrieved successfully");
 
-				authService.comparePassword(password, user[0].password);
-				return user[0];
+				isAuthenticated = authService.comparePassword(password, user.password);
+				if(isAuthenticated) {
+					logger.debug(__filename, __line, "User credentials are matching");
+					return user;
+				} else {
+					logger.error(__filename, __line, "User credentials are not correct");
+					throw null;
+				}
 			})
 			.then(function(user) {
 
@@ -118,12 +133,19 @@ let ctrl = {
 	getUser: function (req, res){
 		const username = req.body.username;
 
+		logger.debug(__filename, __line, "Get User", username);
+
 		return userDao.dao.getUser({username: username})
 			.then(function(user) {
 
-				logger.debug(__filename, __line, "User retrieved successfully");
+				if(_.isEmpty(user)) {
+					logger.error(__filename, __line, "User not found");
+					throw null;
+				} 
 
-				return user[0];
+				logger.debug(__filename, __line, "User retrieved successfully", user);
+
+				return user;
 			})
 			.then(function(user) {
 				res.status(200).json({

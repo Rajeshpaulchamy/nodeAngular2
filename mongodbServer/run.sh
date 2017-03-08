@@ -34,6 +34,11 @@ fi
 if [ "$1" = "runconsole" ]; then
 	echo "Selected mode is : runconsole"
 	echo "*** In case of errors, make sure first execture the 'run' command  ***"
+	docker stop mongodbserver || true
+	docker rm mongodbserver || true
+	docker run -v "$(pwd)/data":/data/db --name mongodbserver -d rajeshpaulchamy/mongodb3.4
+	# sleep for 5 seconds to wait for the mongod server start run
+	sleep 5s
 	docker exec -it mongodbserver mongo admin
 	exit
 fi

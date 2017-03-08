@@ -12,8 +12,15 @@
 
 module.exports = {
 	database: {
-		host: '172.17.0.2',
-		port: 28015,
+		/*
+		 * for docker connect
+		 */
+		//url: 'mongodb://mongodburl:27017/dmsdb',
+		/*
+		 * to run idependently
+		 */
+		url: 'mongodb://172.17.0.2:27017/dmsdb',
+		port: 27017,
 		db: 'dmsdb',
 		createDatabase: true
 	},

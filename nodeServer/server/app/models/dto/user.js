@@ -13,11 +13,37 @@
 /*
  * retrieve the required modules
  */
-var  driver = require('../driver').driver;
+var mongoose = require('mongoose'),
+	Schema = mongoose.Schema;
 
-exports.user = {
-	username: driver.dbtypes.TYPE_STRING,
-	password: driver.dbtypes.TYPE_STRING,
-	email: driver.dbtypes.TYPE_STRING
+var userSchema = {
+	/*
+	 * Username field
+	 */
+	username: { type: String, required: true, unique: true },
+
+	/*
+	 * Password field
+	 */
+	password: { type: String, required: true },
+
+	/*
+	 * Email field
+	 */
+	email:  { type: String, required: true },
+
+
+	created_at: Date,
+	updated_at: Date
+
 };
+
+
+/*
+ * we need to create a model using 
+ * the above schema
+ */
+var User = mongoose.model('User', userSchema);
+
+module.exports = User;
 

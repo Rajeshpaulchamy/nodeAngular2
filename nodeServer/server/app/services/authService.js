@@ -29,7 +29,7 @@ function encodeToken(user) {
 	const playload = {
 		exp: moment().add(14, 'days').unix(),
 		iat: moment().unix(),
-		sub: user.id
+		sub: user.username
 	};
 
 	return jwt.encode(playload, config.secretKey);
@@ -92,9 +92,8 @@ function isAuthenticated(req, res, next) {
 
 			return userDao.dao.getUser({id: payload.sub})
 				.then(function(user) {
-					next();
-
 					logger.debug(__filename, __line, "User authentication is valid");
+					next();
 				})
 				.catch(function(err) {
 					res.status(500).json({
