@@ -1,58 +1,81 @@
 {
-  "project": {
-    "version": "1.0.0-beta.26",
-    "name": "client"
-  },
-  "apps": [
-    {
-      "root": "src",
-      "outDir": "dist",
-      "assets": [
-        "assets",
-        "favicon.ico"
-      ],
-      "index": "index.html",
-      "main": "main.ts",
-      "test": "test.ts",
-      "tsconfig": "tsconfig.json",
-      "prefix": "app",
-      "mobile": false,
-      "styles": [
-        "styles.scss",
-		"../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss"
-      ],
-      "scripts": [],
-      "environments": {
-        "source": "environments/environment.ts",
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
-      }
-    }
-  ],
-  "e2e": {
-    "protractor": {
-      "config": "./protractor.conf.js"
-    }
-  },
-  "test": {
-    "karma": {
-      "config": "./karma.conf.js"
-    }
-  },
-  "defaults": {
-    "styleExt": "scss",
-    "prefixInterfaces": false,
-    "inline": {
-      "style": false,
-      "template": false
-    },
-    "spec": {
-      "class": false,
-      "component": true,
-      "directive": true,
-      "module": false,
-      "pipe": true,
-      "service": true
-    }
-  }
+	"project": {
+		"version": "1.0.0-beta.26",
+		"name": "client"
+	},
+	"apps": [
+		{
+			"root": "src",
+			"outDir": "dist",
+			"assets": [
+				"assets",
+				"favicon.ico"
+			],
+			"index": "index.html",
+			"main": "main.ts",
+			"test": "test.ts",
+			"tsconfig": "tsconfig.json",
+			"prefix": "app",
+			"mobile": false,
+			"styles": [
+				"styles.scss",
+				"assets/css/custom-theme.scss",
+				"../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss",
+				"../node_modules/material-design-icons/iconfont/material-icons.css",
+				"libs/google/css/googlefonts.css",
+				"libs/font-awesome/css/font-awesome.min.css",
+				"libs/bootstrap/css/bootstrap.4.0.css",
+				"libs/bootstrap/css/bootstrap.theme.cloud.css",
+				"libs/bootstrap-drawer/css/bootstrap-drawer.min.css",
+				"libs/gridstack/css/gridstack.css",
+				"libs/gridstack/css/gridstack-extra.css",
+				"libs/dragndrop/css/dragNdropWidgets.css",
+				"libs/datatable/css/dataTables.bootstrap4.min.css"
+			],
+			"scripts": [
+				"libs/jquery/js/jquery-3.1.1.js",
+				"libs/jqueryui/js/jquery-ui.1.12.js",
+				"libs/bootstrap/js/bootstrap.3.3.min.js",
+				"libs/bootstrap-drawer/js/drawer.min.js",
+				"libs/lodash/js/lodash.min.js",
+				"libs/gridstack/js/gridstack.js",
+				"libs/gridstack/js/gridstack.jQueryUI.js",
+				"libs/dragndrop/js/dragNdropWidgets.js",
+				"libs/datatable/js/jquery.dataTables.min.js",
+				"libs/datatable/js/dataTables.bootstrap4.min.js",
+				"libs/chart/js/Chart.bundle.min.js"
+			],
+			"environments": {
+				"source": "environments/environment.ts",
+				"dev": "environments/environment.ts",
+				"prod": "environments/environment.prod.ts"
+			}
+		}
+	],
+	"e2e": {
+		"protractor": {
+			"config": "./protractor.conf.js"
+		}
+	},
+	"test": {
+		"karma": {
+			"config": "./karma.conf.js"
+		}
+	},
+	"defaults": {
+		"styleExt": "scss",
+		"prefixInterfaces": false,
+		"inline": {
+			"style": false,
+			"template": false
+		},
+		"spec": {
+			"class": false,
+			"component": true,
+			"directive": true,
+			"module": false,
+			"pipe": true,
+			"service": true
+		}
+	}
 }

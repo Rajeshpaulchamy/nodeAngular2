@@ -4,6 +4,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import {RequestOptions, Request, RequestMethod} from '@angular/http';
+/*
+ * Angular2 Material Design
+ */
+import { MaterialModule } from '@angular/material';
+import 'hammerjs';
+
+/*
+ * directives
+ */
+import { OoraDragToGridDirective } from '../../directives/ooradragtogrid.directive';
+
 
 /*
  * components
@@ -11,6 +22,10 @@ import {RequestOptions, Request, RequestMethod} from '@angular/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from '../login/login.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
+import { HeaderComponent } from '../header/header.component';
+import { SidenavComponent } from '../sidenav/sidenav.component';
+import { WidgetsComponent } from '../widgets/widgets.component';
+import { ContentContainerComponent } from '../contentcontainer/contentcontainer.component';
 
 /*
  * services
@@ -18,6 +33,7 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { GuardService } from '../../services/guards/index';
 import { AuthService } from '../../services/auth/index';
 import { UserService } from '../../services/user/index';
+import { SidenavService } from '../../services/sidenav/index';
 
 /*
  * set request options
@@ -42,16 +58,21 @@ var req = new Request(options);
 		FormsModule,
 		HttpModule,
 		AppRoutingModule,
-
+		MaterialModule
 	],
 
 	/*
 	 * the view classes that belong to this module
 	 */
 	declarations: [
+		OoraDragToGridDirective,
 		AppComponent,
 		LoginComponent,
-		DashboardComponent
+		DashboardComponent,
+		HeaderComponent,
+		SidenavComponent,
+		WidgetsComponent,
+		ContentContainerComponent
 	],
 
 
@@ -64,7 +85,8 @@ var req = new Request(options);
 	
 		GuardService,
 		AuthService,
-		UserService
+		UserService,
+		SidenavService
 	],
 
 	/*

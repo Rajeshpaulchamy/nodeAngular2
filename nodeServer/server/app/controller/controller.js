@@ -143,7 +143,7 @@ let ctrl = {
 					throw null;
 				} 
 
-				logger.debug(__filename, __line, "User retrieved successfully", user);
+				logger.debug(__filename, __line, "User retrieved successfully");
 
 				return user;
 			})

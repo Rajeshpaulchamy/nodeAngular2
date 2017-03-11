@@ -13,10 +13,16 @@
 /*
  * retrieve the required modules
  */
-import { Component, OnInit } from '@angular/core';
+import { ViewChild, Component, OnInit } from '@angular/core';
+/*
+ * Angular2 Material Design
+ */
+import { MaterialModule } from '@angular/material';
+import { MdSidenav } from '@angular/material';
 
 import { User } from '../../models/index';
 import { UserService } from '../../services/user/index';
+import { SidenavService } from '../../services/sidenav/index';
 
 /*
  * Component metadata
@@ -42,13 +48,36 @@ export class DashboardComponent {
 	 */
 	user: User;
 	userService: UserService;
+	sidenavService: SidenavService;
 
+
+	/*
+	 * this is the Material Design Sidenav class reference
+	 */
+	@ViewChild('sidenav') sidenav: MdSidenav;
+
+
+	/*
+	 * toggle sidenav
+	 */
+	toggleSidebar() {
+		this.sidenav.toggle();
+	}
 
 	/*
 	 * constructor
 	 */
-	constructor(usrServ: UserService) { 
+	constructor(usrServ: UserService, snService: SidenavService) { 
+		var self = this;
 		this.userService = usrServ;
+	
+		/*
+		 * subscribe for sidenav service
+		 */
+		this.sidenavService = snService;
+		this.sidenavService.toggle.subscribe(function(value: boolean) {
+			self.toggleSidebar();
+		});
 	}
 
 	/*

@@ -78,6 +78,9 @@ export class AuthService {
 				 */
 				return false;
 			}
+		})
+		.catch((error: any) => {
+			return Observable.of(false);
 		});
 	}
 

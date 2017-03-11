@@ -1,10 +1,12 @@
-<div> Dashboard Page {{title}} </div>
+<md-sidenav-container [class.m2app-dark]="isDarkTheme">
 
-<div>
-	Users :
-	<ul>
-		<li *ngIf="user">{{user.username}} {{user.email}}</li>
-	</ul>
-</div>
+	<md-sidenav  #sidenav mode="side" class="app-sidenav" fullscreen>
+		<dashboard-sidenav></dashboard-sidenav>
+	</md-sidenav>
 
-<p><a [routerLink]="['/login']">Logout</a></p>
+	<dashboard-header></dashboard-header>
+	<dashboard-content></dashboard-content>
+
+</md-sidenav-container>
+
+
