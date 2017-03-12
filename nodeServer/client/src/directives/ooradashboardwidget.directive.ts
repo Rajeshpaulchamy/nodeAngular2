@@ -7,7 +7,7 @@
  * Revision number:
  * ******************
  * Rev.01 : 11-Mar-2017  
- *     Dragger driective file
+ *     OORA Dashboard Widgets driective file
  */
 
 /*
@@ -18,12 +18,12 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 /*
  * decorator for directive
  */
-@Directive({ selector: '[ooraDragToGrid]' })
+@Directive({ selector: '[OoraDashboardWidget]' })
 
 /*
  * directive class
  */
-export class OoraDragToGridDirective implements OnInit {
+export class OoraDashboardWidget implements OnInit {
 	/*
 	 * private elements
 	 */
@@ -39,6 +39,11 @@ export class OoraDragToGridDirective implements OnInit {
 	widget: any;
 
 	/*
+	 * directive name
+	 */
+	@Input() name: string;
+
+	/*
 	 * constructor
 	 */
 	constructor(el: ElementRef) {
@@ -49,41 +54,7 @@ export class OoraDragToGridDirective implements OnInit {
 	 * implement the interface
 	 */
 	ngOnInit() {
-		var element = $(this.el.nativeElement).find('.grid-stack-item');
-		if(element.length === 0) {
-			/*
-			 * continue
-			 */
-		} else {
-			/*
-			 * nothing to do
-			 */
-			return;
-		}
-
-		/*
-		 * first detach the children element
-		 * and save it.
-		 */
-		this.widget = $(this.el.nativeElement).children().detach();
-
-		/*
-		 * create gridstack elements
-		 */
-		$('<div class="widget grid-stack-item">')
-		.append('<div class="grid-stack-item-content">')
-		.appendTo(this.el.nativeElement);
-
-		/*
-		 * now move inside grid-stack-item-content
-		 */
-		$(this.el.nativeElement).find('.grid-stack-item-content').append(this.widget);
-
-
-		/*
-		 * add dragger support
-		 */
-		$($(this.el.nativeElement).find('.grid-stack-item')).draggable(this.options);
+		this.createWidget();
 	}
 
 	/*
@@ -97,6 +68,13 @@ export class OoraDragToGridDirective implements OnInit {
 	 * onStop
 	 */
 	onStop() {
+		this.createWidget();
+	}
+
+	/*
+	 * create widget
+	 */
+	createWidget() {
 		var element = $(this.el.nativeElement).find('.grid-stack-item');
 		if(element.length === 0) {
 			/*
@@ -109,11 +87,37 @@ export class OoraDragToGridDirective implements OnInit {
 			return;
 		}
 
+		/*
+		 * backup the widget
+		 */
+		if(this.widget) {
+			/*
+			 * do nothing
+			 */
+		} else {
+			/*
+			 * first detach the children element
+			 * and save it.
+			 */
+			this.widget = $(this.el.nativeElement).children().detach();
+		}
+
+		if(this.el.nativeElement.outerHTML.toLowerCase().indexOf("ooradashboardwidget") >= 0){
+			/*
+			 * ok continue
+			 */
+		} else {
+
+			/*
+			 * something wrong
+			 */
+			return;
+		}
 
 		/*
 		 * create gridstack elements
 		 */
-		$('<div class="widget grid-stack-item">')
+		$('<div class="widget grid-stack-item" name="' + this.name + '">')
 		.append('<div class="grid-stack-item-content">')
 		.appendTo(this.el.nativeElement);
 

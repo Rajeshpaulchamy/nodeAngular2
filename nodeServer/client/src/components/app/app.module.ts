@@ -13,7 +13,8 @@ import 'hammerjs';
 /*
  * directives
  */
-import { OoraDragToGridDirective } from '../../directives/ooradragtogrid.directive';
+import { OoraDashboardWidget } from '../../directives/ooradashboardwidget.directive';
+import { OoraDashboardWidgetContainer } from '../../directives/ooradashboardwidgetcontainer.directive';
 
 
 /*
@@ -25,6 +26,7 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HeaderComponent } from '../header/header.component';
 import { SidenavComponent } from '../sidenav/sidenav.component';
 import { WidgetsComponent } from '../widgets/widgets.component';
+import { OoraWidgetTable } from '../widgets/oorawidgettable.component';
 import { ContentContainerComponent } from '../contentcontainer/contentcontainer.component';
 
 /*
@@ -65,16 +67,25 @@ var req = new Request(options);
 	 * the view classes that belong to this module
 	 */
 	declarations: [
-		OoraDragToGridDirective,
+		OoraDashboardWidget,
+		OoraDashboardWidgetContainer,
 		AppComponent,
 		LoginComponent,
 		DashboardComponent,
 		HeaderComponent,
 		SidenavComponent,
 		WidgetsComponent,
+		OoraWidgetTable,
 		ContentContainerComponent
 	],
 
+
+	/*
+	 * entry components
+	 */
+	entryComponents: [
+		OoraWidgetTable
+	],
 
 	/*
 	 * creators of services that this module contributes 

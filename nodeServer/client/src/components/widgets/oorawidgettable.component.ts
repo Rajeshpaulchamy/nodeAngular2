@@ -6,14 +6,14 @@
  *
  * Revision number:
  * ******************
- * Rev.01 : 11-Mar-2017  
- *     Content Container component file
+ * Rev.01 : 12-Mar-2017  
+ *     OORA Widget Table component file
  */
 
 /*
  * retrieve the required modules
  */
-import { ViewChild, Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 /*
@@ -23,19 +23,19 @@ import { ViewChild, Component, ElementRef, OnInit } from '@angular/core';
 	/*
 	 * selector 
 	 */
-	selector: 'dashboard-content',
+	selector: 'oorawidgettable',
 
 	/*
 	 * template URL
 	 */
-	templateUrl: './contentcontainer.html'
+	templateUrl: './oorawidgettable.html'
 })
 
 
 /*
  * define Component class
  */
-export class ContentContainerComponent implements OnInit {
+export class OoraWidgetTable implements OnInit {
 	/*
 	 * private members
 	 */
@@ -50,11 +50,6 @@ export class ContentContainerComponent implements OnInit {
 	 * implement the interface
 	 */
     ngOnInit() {
-	}
+    }
 
-	/*
-	 * Component views are initialized
-	 */
-	ngAfterViewInit() {
-	}
 }

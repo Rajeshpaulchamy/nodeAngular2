@@ -13,5 +13,5 @@
 /*
  * export modules
  */
-export OoraDragToGridDirective from './ooradragtogrid.directive';
+export OoraDashboardWidget from './ooradashboardwidget.directive';
 

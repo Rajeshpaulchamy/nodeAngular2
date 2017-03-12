@@ -19,6 +19,7 @@ import { ViewChild, Component, OnInit } from '@angular/core';
  */
 import { MaterialModule } from '@angular/material';
 import { MdSidenav } from '@angular/material';
+import { Subscription }   from 'rxjs/Subscription';
 
 import { User } from '../../models/index';
 import { UserService } from '../../services/user/index';
@@ -48,7 +49,7 @@ export class DashboardComponent {
 	 */
 	user: User;
 	userService: UserService;
-	sidenavService: SidenavService;
+	subscription: Subscription;
 
 
 	/*
@@ -74,8 +75,7 @@ export class DashboardComponent {
 		/*
 		 * subscribe for sidenav service
 		 */
-		this.sidenavService = snService;
-		this.sidenavService.toggle.subscribe(function(value: boolean) {
+		this.subscription = snService.toggle.subscribe(function(value: boolean) {
 			self.toggleSidebar();
 		});
 	}
@@ -93,6 +93,15 @@ export class DashboardComponent {
 			this.user = user;
 		});
 	}
+
+
+	/*
+	 * on destroy
+	 */
+	ngOnDestroy() {
+		this.subscription.unsubscribe();
+	}
+
 }
 
 

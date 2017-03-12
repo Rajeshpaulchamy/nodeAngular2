@@ -193,7 +193,7 @@ interface IGridstackOptions {
     /**
      *  one cell height (default: 60)
      */
-    cellHeight?: number;
+    cellHeight?: string;
     /**
      * allows to override jQuery UI draggable options. (default: { handle: '.grid-stack-item-content', scroll: true, appendTo: 'body' })
      */

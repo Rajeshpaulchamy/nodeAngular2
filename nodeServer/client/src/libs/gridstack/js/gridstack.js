@@ -849,8 +849,15 @@
                     var el = $(ui.draggable);
                     el.unbind('drag', onDrag);
                     var node = el.data('_gridstack_node');
-                    node.el = null;
-                    self.grid.removeNode(node);
+					/*
+					 * rajesh - fix added, while dragging very fast
+					 * the 'el.data' returns undefined to 'node' variable
+					 * so below fix added
+					 */
+					if(node) {
+						node.el = null;
+						self.grid.removeNode(node);
+					}	
                     self.placeholder.detach();
                     self._updateContainerHeight();
                     el.data('_gridstack_node', el.data('_gridstack_node_orig'));
