@@ -13,8 +13,8 @@ import 'hammerjs';
 /*
  * directives
  */
-import { OoraDashboardWidget } from '../../directives/ooradashboardwidget.directive';
-import { OoraDashboardWidgetContainer } from '../../directives/ooradashboardwidgetcontainer.directive';
+import { OoraWidget } from '../../directives/oorawidget.directive';
+import { OoraWidgetContainer } from '../../directives/oorawidgetcontainer.directive';
 
 
 /*
@@ -26,7 +26,7 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HeaderComponent } from '../header/header.component';
 import { SidenavComponent } from '../sidenav/sidenav.component';
 import { WidgetsComponent } from '../widgets/widgets.component';
-import { OoraWidgetTable } from '../widgets/oorawidgettable.component';
+import { OoraTable } from '../widgets/ooratable.component';
 import { ContentContainerComponent } from '../contentcontainer/contentcontainer.component';
 
 /*
@@ -67,15 +67,15 @@ var req = new Request(options);
 	 * the view classes that belong to this module
 	 */
 	declarations: [
-		OoraDashboardWidget,
-		OoraDashboardWidgetContainer,
+		OoraWidget,
+		OoraWidgetContainer,
 		AppComponent,
 		LoginComponent,
 		DashboardComponent,
 		HeaderComponent,
 		SidenavComponent,
 		WidgetsComponent,
-		OoraWidgetTable,
+		OoraTable,
 		ContentContainerComponent
 	],
 
@@ -84,7 +84,7 @@ var req = new Request(options);
 	 * entry components
 	 */
 	entryComponents: [
-		OoraWidgetTable
+		OoraTable
 	],
 
 	/*

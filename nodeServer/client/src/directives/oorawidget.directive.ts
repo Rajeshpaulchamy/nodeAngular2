@@ -18,12 +18,12 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 /*
  * decorator for directive
  */
-@Directive({ selector: '[OoraDashboardWidget]' })
+@Directive({ selector: '[OoraWidget]' })
 
 /*
  * directive class
  */
-export class OoraDashboardWidget implements OnInit {
+export class OoraWidget implements OnInit {
 	/*
 	 * private elements
 	 */
@@ -102,7 +102,7 @@ export class OoraDashboardWidget implements OnInit {
 			this.widget = $(this.el.nativeElement).children().detach();
 		}
 
-		if(this.el.nativeElement.outerHTML.toLowerCase().indexOf("ooradashboardwidget") >= 0){
+		if(this.el.nativeElement.outerHTML.toLowerCase().indexOf("oorawidget") >= 0){
 			/*
 			 * ok continue
 			 */

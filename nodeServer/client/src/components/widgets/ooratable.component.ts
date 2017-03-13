@@ -7,13 +7,13 @@
  * Revision number:
  * ******************
  * Rev.01 : 12-Mar-2017  
- *     OORA Widget Table component file
+ *     Table widget component file
  */
 
 /*
  * retrieve the required modules
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 /*
@@ -23,22 +23,23 @@ import { Component, OnInit } from '@angular/core';
 	/*
 	 * selector 
 	 */
-	selector: 'oorawidgettable',
+	selector: 'ooratable',
 
 	/*
 	 * template URL
 	 */
-	templateUrl: './oorawidgettable.html'
+	templateUrl: './ooratable.html'
 })
 
 
 /*
  * define Component class
  */
-export class OoraWidgetTable implements OnInit {
+export class OoraTable implements OnInit {
 	/*
 	 * private members
 	 */
+	@Input() widgetId: any;
 
 	/*
 	 * constructor
@@ -50,6 +51,22 @@ export class OoraWidgetTable implements OnInit {
 	 * implement the interface
 	 */
     ngOnInit() {
+		console.log("Widget ID: " + this.widgetId);
     }
 
+	/*
+	 * called by container
+	 * when widget settings button clicked
+	 */
+	openSettings() {
+		console.log("Open Settings: " + this.widgetId);
+	}
+
+	/*
+	 * called by container
+	 * when widget close button clicked
+	 */
+	closeWidget() {
+		console.log("Widget Closed: " + this.widgetId);
+	}
 }
