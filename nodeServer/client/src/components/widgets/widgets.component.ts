@@ -23,7 +23,7 @@ import { Component, OnInit } from '@angular/core';
 	/*
 	 * selector 
 	 */
-	selector: 'sidenav-widgets',
+	selector: 'widgets',
 
 	/*
 	 * template URL

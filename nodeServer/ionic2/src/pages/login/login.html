@@ -1,0 +1,30 @@
+
+<ion-content text-center class="vertical-align-content">
+	<ion-grid>
+		<ion-row>
+			<ion-col width-33 offset-33>
+
+				<!--<p> Rama Rama Rama </p>-->
+
+				<form (ngSubmit)="login()">
+					<ion-item>
+						<ion-label>Username</ion-label>
+						<ion-input type="text" [(ngModel)]="model.username" name="username"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label>Password</ion-label>
+						<ion-input type="password" [(ngModel)]="model.password" name="password"></ion-input>
+					</ion-item>
+
+					<button [disabled]="loading" ion-button type="submit" block>Login</button>
+				</form>
+
+
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>
+
+
+
+

@@ -23,7 +23,7 @@ import { Subscription }   from 'rxjs/Subscription';
 
 import { User } from '../../models/index';
 import { UserService } from '../../services/user/index';
-import { SidenavService } from '../../services/sidenav/index';
+import { DashboardService } from '../../services/dashboard/index';
 
 /*
  * Component metadata
@@ -68,14 +68,14 @@ export class DashboardComponent {
 	/*
 	 * constructor
 	 */
-	constructor(usrServ: UserService, snService: SidenavService) { 
+	constructor(usrServ: UserService, dashService: DashboardService) { 
 		var self = this;
 		this.userService = usrServ;
 	
 		/*
 		 * subscribe for sidenav service
 		 */
-		this.subscription = snService.toggle.subscribe(function(value: boolean) {
+		this.subscription = dashService.toggleSideNavbar.subscribe(function(value: boolean) {
 			self.toggleSidebar();
 		});
 	}

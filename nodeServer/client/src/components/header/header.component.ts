@@ -17,7 +17,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth/index';
-import { SidenavService } from '../../services/sidenav/index';
+import { DashboardService } from '../../services/dashboard/index';
 
 /*
  * Component metadata
@@ -45,15 +45,15 @@ export class HeaderComponent implements OnInit {
 	model: any = {};
 	router: Router;
 	authService: AuthService;
-	sidenavService: SidenavService;
+	dashboardService: DashboardService;
 
 	/*
 	 * constructor
 	 */
-    constructor(router: Router, authService: AuthService, snService: SidenavService) { 
+    constructor(router: Router, authService: AuthService, dashService: DashboardService) { 
 		this.router = router;
 		this.authService = authService;
-		this.sidenavService = snService;
+		this.dashboardService = dashService;
 	}
 
 	/*
@@ -69,7 +69,7 @@ export class HeaderComponent implements OnInit {
         /* 
 		 * toggle
 		 */
-        this.sidenavService.toggle.next(true);
+        this.dashboardService.toggleSideNavbar.next(true);
 	}
 
 	/*

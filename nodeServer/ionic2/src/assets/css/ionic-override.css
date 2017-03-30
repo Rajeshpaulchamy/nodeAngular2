@@ -1,0 +1,13 @@
+
+.scroll-content {
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
+.vertical-align-content > *
+{
+	display: flex!important;
+	align-content: center!important;
+	align-items: center!important;
+}
+

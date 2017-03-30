@@ -24,7 +24,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from '../login/login.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HeaderComponent } from '../header/header.component';
-import { SidenavComponent } from '../sidenav/sidenav.component';
 import { WidgetsComponent } from '../widgets/widgets.component';
 import { OoraTable } from '../widgets/ooratable.component';
 import { ContentContainerComponent } from '../contentcontainer/contentcontainer.component';
@@ -35,7 +34,7 @@ import { ContentContainerComponent } from '../contentcontainer/contentcontainer.
 import { GuardService } from '../../services/guards/index';
 import { AuthService } from '../../services/auth/index';
 import { UserService } from '../../services/user/index';
-import { SidenavService } from '../../services/sidenav/index';
+import { DashboardService } from '../../services/dashboard/index';
 
 /*
  * set request options
@@ -73,7 +72,6 @@ var req = new Request(options);
 		LoginComponent,
 		DashboardComponent,
 		HeaderComponent,
-		SidenavComponent,
 		WidgetsComponent,
 		OoraTable,
 		ContentContainerComponent
@@ -97,7 +95,7 @@ var req = new Request(options);
 		GuardService,
 		AuthService,
 		UserService,
-		SidenavService
+		DashboardService
 	],
 
 	/*
